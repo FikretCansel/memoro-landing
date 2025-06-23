@@ -1,94 +1,85 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+
+const FEATURES = [
+  {
+    icon: "🎯",
+    title: "Seviye Seçimi",
+    desc: "A1'den C2'ye kadar seviyeni seç, sana uygun kelimelerle çalış.",
+  },
+  {
+    icon: "📚",
+    title: "Geniş Kelime Havuzu",
+    desc: "44.000'den fazla kelime içeren kapsamlı sözlük ve kişisel listeler.",
+  },
+  {
+    icon: "📱",
+    title: "Çevrimdışı Kullanım",
+    desc: "İnternete ihtiyaç duymadan tamamen çevrimdışı çalışabilme.",
+  },
+  {
+    icon: "🖼️",
+    title: "Görsel Oluşturma",
+    desc: "Seçtiğin kelimelerle kilit ekranı görselleri oluştur, galeriye kaydet.",
+  },
+  {
+    icon: "📈",
+    title: "İlerleme Takibi",
+    desc: "Öğrenilen kelimelerin seviyeye göre istatistiklerini görüntüle.",
+  },
+  {
+    icon: "🎮",
+    title: "Egzersiz ve Oyunlar",
+    desc: "Boşluk doldurma, eşleştirme ve daha fazlası ile eğlenerek öğren.",
+  },
+  {
+    icon: "📝",
+    title: "Gramer ve Eğitim",
+    desc: "Seviyeye göre gramer konuları ve interaktif alıştırmalar.",
+  },
+  {
+    icon: "🌗",
+    title: "Çoklu Tema ve Dil",
+    desc: "Açık, karanlık ve pastel temalar ile Türkçe/Portekizce dil desteği.",
+  },
+];
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <header className={styles.header}>
+        <Image src="/logo-placeholder.png" alt="Memoro Logo" width={64} height={64} className={styles.logo} />
+        <h1 className={styles.title}>Memoro</h1>
+        <p className={styles.slogan}>Kelime öğrenmeyi kolaylaştıran uygulama</p>
+        <a className={styles.downloadBtn} href="https://github.com/eyupduran/memoro/tags" target="_blank" rel="noopener noreferrer">
+          Uygulamayı İndir
+        </a>
+      </header>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        <section className={styles.featuresGrid}>
+          {FEATURES.map((f, i) => (
+            <div className={styles.featureCard} key={i}>
+              <span className={styles.featureIcon}>{f.icon}</span>
+              <div>
+                <h3 className={styles.featureTitle}>{f.title}</h3>
+                <p className={styles.featureDesc}>{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </section>
+        <section className={styles.screenshots}>
+          <h2>Uygulamadan Görseller</h2>
+          <div className={styles.screenshotGrid}>
+            <Image src="/screenshot1.jpg" alt="Ekran Görüntüsü 1" width={200} height={400} className={styles.screenshot} />
+            <Image src="/screenshot2.jpg" alt="Ekran Görüntüsü 2" width={200} height={400} className={styles.screenshot} />
+            <Image src="/screenshot3.jpg" alt="Ekran Görüntüsü 3" width={200} height={400} className={styles.screenshot} />
+          </div>
+        </section>
       </main>
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <span>© {new Date().getFullYear()} Memoro</span>
+        <a href="https://github.com/eyupduran/memoro" target="_blank" rel="noopener noreferrer">GitHub</a>
       </footer>
     </div>
   );
